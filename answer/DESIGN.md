@@ -220,19 +220,19 @@ Admin analytics — thêm sau bằng endpoint `/admin/stats` aggregate từ `aud
 
 **Ngày 2 — Backend core (TDD)**
 
-- ~~DB schema + migration + seed data~~ ✓
-- ~~Auth: JWT login, phân role seller/admin~~ ✓
+- DB schema + migration + seed data
+- Auth: JWT login, phân role seller/admin
 - Viết test trước cho từng route/service → implement để pass
-- ~~Upload endpoint + mock service~~ ✓
-- ~~BullMQ worker + webhook + state machine~~ ✓
-- ~~Admin routes: list, claim, decide~~ ✓
-- ~~Notification queue~~ ✓
+- Upload endpoint + mock service
+- BullMQ worker + webhook + state machine
+- Admin routes: list, claim, decide
+- Notification queue
 
 **Ngày 3 — Frontend + integration (TDD)**
 
 - Viết test cho các flow end-to-end trước
-- ~~Seller frontend: login, upload, xem status~~ ✓
-- ~~Admin frontend: queue, review, quyết định~~ ✓
+- Seller frontend: login, upload, xem status
+- Admin frontend: queue, review, quyết định
 - Chạy toàn bộ test suite, fix đến pass
 
 **Ngày 4 — Delivery**
