@@ -208,19 +208,34 @@ Admin analytics — thêm sau bằng endpoint `/admin/stats` aggregate từ `aud
 
 ---
 
-## 8. Kế hoạch nếu có 2 tuần
+## 8. Kế hoạch thực tế — 4 ngày
 
-| | Việc | Ước tính | Cần gì trước |
-|---|---|---|---|
-| 1 | DB schema + migration | 0.5 ngày | — |
-| 2 | Auth (JWT, seed data) | 0.5 ngày | 1 |
-| 3 | Upload endpoint | 1 ngày | 1, 2 |
-| 4 | BullMQ + worker skeleton | 1 ngày | 1 |
-| 5 | Mock service | 0.5 ngày | — |
-| 6 | Webhook + state machine | 1 ngày | 4, 5 |
-| 7 | Admin routes | 1 ngày | 6 |
-| 8 | Notification | 0.5 ngày | 6 |
-| 9 | Seller frontend | 1.5 ngày | 3, 2 |
-| 10 | Admin frontend | 1.5 ngày | 7, 2 |
-| 11 | Validation, error handling, tests | 1 ngày | tất cả |
-| 12 | Deploy | 0.5 ngày | tất cả |
+**Ngày 1 — Brainstorm + Planning**
+
+- Đọc brief, xác định stakeholder và edge cases
+- Đặt clarifying questions, chọn working assumptions
+- Vẽ state machine và architecture diagram
+- Viết DESIGN.md
+- Break task thành từng bước nhỏ có thể ship độc lập
+
+**Ngày 2 — Backend core (TDD)**
+
+- ~~DB schema + migration + seed data~~ ✓
+- ~~Auth: JWT login, phân role seller/admin~~ ✓
+- Viết test trước cho từng route/service → implement để pass
+- ~~Upload endpoint + mock service~~ ✓
+- ~~BullMQ worker + webhook + state machine~~ ✓
+- ~~Admin routes: list, claim, decide~~ ✓
+- ~~Notification queue~~ ✓
+
+**Ngày 3 — Frontend + integration (TDD)**
+
+- Viết test cho các flow end-to-end trước
+- ~~Seller frontend: login, upload, xem status~~ ✓
+- ~~Admin frontend: queue, review, quyết định~~ ✓
+- Chạy toàn bộ test suite, fix đến pass
+
+**Ngày 4 — Delivery**
+
+- Validation + error handling còn sót
+- Confirm 3 path chính: verified, rejected, inconclusive → admin review
