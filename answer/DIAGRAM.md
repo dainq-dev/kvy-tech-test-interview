@@ -5,31 +5,31 @@
 ```mermaid
 graph TB
     subgraph Frontend["Next.js Frontend"]
-        S[Seller View<br/>/seller]
-        A[Admin View<br/>/admin]
+        S["Seller View (/seller)"]
+        A["Admin View (/admin)"]
     end
 
     subgraph Backend["Bun + Hono Backend"]
-        AUTH[/auth]
-        DOC[/documents]
-        ADM[/admin]
-        WH[/webhook]
-        MOCK[/mock/verify]
+        AUTH["POST /auth"]
+        DOC["POST /documents"]
+        ADM["GET /admin"]
+        WH["POST /webhook"]
+        MOCK["POST /mock/verify"]
 
         subgraph Queues["BullMQ"]
-            VQ[verification-queue]
-            NQ[notification-queue]
+            VQ["verification-queue"]
+            NQ["notification-queue"]
         end
 
         subgraph Workers["Workers"]
-            VW[VerificationWorker]
-            NW[NotificationWorker]
+            VW["VerificationWorker"]
+            NW["NotificationWorker"]
         end
     end
 
     subgraph Storage["Storage"]
-        PG[(PostgreSQL<br/>users<br/>documents<br/>audit_logs)]
-        RD[(Redis<br/>BullMQ state)]
+        PG[("PostgreSQL\nusers\ndocuments\naudit_logs")]
+        RD[("Redis\nBullMQ state")]
     end
 
     S -->|JWT| AUTH
